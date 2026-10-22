@@ -5,18 +5,17 @@ from ejercicios.ejercicio2_combustible import leerDatos, calcularRendimiento, ca
  
  
 def ejecutarEjercicio1(): 
-    cantidad = leerCantidad()
-    subtotal = calcularSubtotal(cantidad)
-    descuento = calcularDescuento(subtotal)
+    cantidad = leerCantidad() 
+    subtotal = calcularSubtotal(cantidad) 
+    descuento = calcularDescuento(subtotal, cantidad) 
     mostrarCompra(cantidad, subtotal, descuento)
 
-
 def ejecutarEjercicio2(): 
-    datos = leerDatos()
-    rendimiento = calcularRendimiento(datos)
-    costo = calcularCosto(rendimiento)
-    mostrarResultados(rendimiento, costo)
-
+    distancia, litros = leerDatos() 
+    precioPorLitro = 24.00 
+    rendimiento = calcularRendimiento(distancia, litros) 
+    costo = calcularCosto(litros, precioPorLitro) 
+    mostrarResultados(distancia, litros, precioPorLitro, rendimiento, costo)
 
 def mostrarMenu(): 
     print() 

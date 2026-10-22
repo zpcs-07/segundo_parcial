@@ -1,25 +1,4 @@
-Un conductor necesita conocer el rendimiento de combustible de su vehículo y el costo de un recorrido. El 
-usuario deberá proporcionar la distancia recorrida en kilómetros y la cantidad de litros consumidos. El 
-precio por litro será de $24.00. 
-El programa deberá realizar los cálculos necesarios y presentar la siguiente información: 
-• Distancia recorrida en kilómetros. 
-• Cantidad de litros consumidos. 
-• Precio por litro de combustible. 
-• Rendimiento del vehículo en kilómetros por litro. 
-• Costo total del combustible consumido. 
-Archivo: ejercicios/ejercicio2_combustible.py 
-Funciones obligatorias: leerDatos, calcularRendimiento, calcularCosto, mostrarResultados. 
-Casos de prueba (calcula manualmente los resultados esperados): 
-Caso 
-Distancia recorrida 
-Litros consumidos 
-1 | 120 km | 10 L
-2 | 250 km | 20 L
-3 | 180 km | 15 L
-4 | 300 km | 25 L
 
-Consideraciones: distancia y litros deberán ser mayores que cero. El rendimiento se mostrará con dos 
-decimales; el costo, en pesos mexicanos con dos decimales. Presenta los resultados mediante tabulate.
 
 # PROBLEMA: qué se necesita resolver, en una oración. 
     #- Calcular el rendimiento de combustible y el costo de un recorrido.
@@ -40,7 +19,7 @@ decimales; el costo, en pesos mexicanos con dos decimales. Presenta los resultad
     # - El rendimiento se calcula como la distancia recorrida entre los litros consumidos.
     # - El costo total se calcula como los litros consumidos por el precio por litro.
     # - El rendimiento y el costo total deben ser números positivos.
-    # - Los resultados deben mostrarse con dos decimales y mediante tabulate.
+    # - Los resultados deben mostrarse con dos decimales 
     # - La distancia y los litros consumidos deben ser mayores que cero.
 
 # ALGORITMO: pasos numerados y operaciones necesarias.
@@ -79,7 +58,7 @@ decimales; el costo, en pesos mexicanos con dos decimales. Presenta los resultad
     #- La distancia y los litros consumidos deben ser mayores que cero.
     #- El precio por litro de combustible debe ser mayor que cero.
     #- El rendimiento y el costo total deben ser números positivos.
-    #- Los resultados deben mostrarse con dos decimales y mediante tabulate.
+    #- Los resultados deben mostrarse con dos decimales
     #- La distancia y los litros consumidos deben ser mayores que cero.
     # - Implementa exactamente este algoritmo, en el mismo orden.  
     # - Usa únicamente las funciones del contrato, con esas firmas. 
@@ -91,40 +70,30 @@ decimales; el costo, en pesos mexicanos con dos decimales. Presenta los resultad
     #- calcularRendimiento: recibe distancia (float) y litros (float), retorna rendimiento (float)
     #- calcularCosto: recibe litros (float) y precioPorLitro (float), retorna costo (float)
     #- mostrarResultados: recibe distancia (float), litros (float), precioPorLitro (float), rendimiento (float) y costo (float), no retorna valor  
+# - No llames a las funciones en este archivo; se llaman desde menu/menu.py.
+#NO USES TABULATE
 
-    def leerDatos():
-        # Leer la distancia recorrida y los litros consumidos 
-        while True:
-            try:
-                distancia = float(input("Ingrese la distancia recorrida (km): "))
-                litros = float(input("Ingrese los litros consumidos (L): "))
-                if distancia > 0 and litros > 0:
-                    return distancia, litros
-                else:
-                    print("La distancia y los litros consumidos deben ser mayores que cero.")
-            except ValueError:
-                print("Entrada inválida. Por favor, ingrese números válidos.")
-                continue
-    def calcularRendimiento(distancia, litros):
-        # Calcular el rendimiento del vehículo dividiendo la distancia recorrida entre los litros consumidos
-        rendimiento = distancia / litros
-        return rendimiento  
+def leerDatos():
+    # Leer la distancia recorrida y los litros consumidos
+    distancia = float(input("Ingrese la distancia recorrida (km): "))
+    litros = float(input("Ingrese los litros consumidos (L): "))
+    return distancia, litros    
 
-    def calcularCosto(litros, precioPorLitro):
-        # Calcular el costo total del combustible consumido multiplicando los litros consumidos por el precio por litro
-        costo = litros * precioPorLitro
-        return costo    
+def calcularRendimiento(distancia, litros):
+    # Calcular el rendimiento del vehículo
+    rendimiento = distancia / litros
+    return rendimiento
 
-    def mostrarResultados(distancia, litros, precioPorLitro, rendimiento, costo):
-        # Mostrar los resultados utilizando tabulate
-        from tabulate import tabulate
-        headers = ["Concepto", "Valor"]
-        data = [
-            ["Distancia recorrida (km)", f"{distancia:.2f}"],
-            ["Litros consumidos (L)", f"{litros:.2f}"],
-            ["Precio por litro de combustible ($)", f"{precioPorLitro:.2f}"],
-            ["Rendimiento del vehículo (km/L)", f"{rendimiento:.2f}"],
-            ["Costo total del combustible consumido ($)", f"{costo:.2f}"]
-        ]
-        print(tabulate(data, headers=headers, tablefmt="grid"))     
-        
+def calcularCosto(litros, precioPorLitro):
+    # Calcular el costo total del combustible consumido
+    costo = litros * precioPorLitro
+    return costo
+
+def mostrarResultados(distancia, litros, precioPorLitro, rendimiento, costo):
+    # Mostrar los resultados
+    print(f"\nDistancia recorrida: {distancia:.2f} km")
+    print(f"Litros consumidos: {litros:.2f} L")
+    print(f"Precio por litro de combustible: ${precioPorLitro:.2f}")
+    print(f"Rendimiento del vehículo: {rendimiento:.2f} km/L")
+    print(f"Costo total del combustible consumido: ${costo:.2f}\n")
+   

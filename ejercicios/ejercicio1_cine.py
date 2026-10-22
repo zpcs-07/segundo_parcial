@@ -1,27 +1,4 @@
-Un cine necesita desarrollar un programa que permita determinar el importe de una compra de boletos. 
-Cada boleto cuesta $75.00. El usuario deberá indicar cuántos boletos desea comprar. Cuando se adquieran 4 
-boletos o más, se aplicará un descuento del 10% sobre el subtotal. Para compras menores a 4 boletos, no se 
-aplicará descuento. 
-El programa deberá realizar los cálculos necesarios y presentar la siguiente información: 
-• Cantidad de boletos adquiridos. 
-• Precio unitario del boleto. 
-• Subtotal de la compra. 
-• Descuento aplicado. 
-Segundo Examen Parcial · Programación Aplicada II 
-• Total a pagar. 
-Universidad Iberoamericana León                                           
- Ing. Alejandro Montes 
-Archivo: ejercicios/ejercicio1_cine.py 
-Funciones obligatorias: leerCantidad, calcularSubtotal, calcularDescuento, mostrarCompra. 
-Casos de prueba (calcula manualmente los resultados esperados): 
-Caso |Cantidad de boletos 
-1 | 1
-2 | 3
-3 | 4
-4 | 6
 
-Consideraciones: la cantidad de boletos deberá ser un entero mayor que cero; los importes deberán 
-mostrarse en pesos mexicanos con dos decimales y mediante tabulate.
 
 #• PROBLEMA: Determinar el importe total de la compra de boletos de cine, considerando descuentos por cantidad.
 #• ENTRADAS: cantidad de boletos (entero mayor que cero).
@@ -83,7 +60,7 @@ mostrarse en pesos mexicanos con dos decimales y mediante tabulate.
 #• RESTRICCIONES PARA EL AGENTE: condiciones que debe respetar Copilot; la única biblioteca externa permitida es tabulate.
     #- La cantidad de boletos debe ser un entero positivo.
     #- La cantidad de boletos no debe ser cero.
-    #- Los importes deben mostrarse en pesos mexicanos con dos decimales y mediante tabulate.
+    #- Los importes deben mostrarse en pesos mexicanos con dos decimales 
     #- El descuento se aplicará solo si la cantidad de boletos es mayor o igual a 4.
     #- El total a pagar debe ser un número positivo.
     # - Implementa exactamente este algoritmo, en el mismo orden.  
@@ -97,33 +74,29 @@ mostrarse en pesos mexicanos con dos decimales y mediante tabulate.
     #- calcularSubtotal: recibe un entero (cantidad de boletos), retorna un float (subtotal).
     #- calcularDescuento: recibe un float (subtotal) y un entero (cantidad de boletos), retorna un float (descuento).
     #- mostrarCompra: recibe un entero (cantidad de boletos), un float (precio unitario), un float (subtotal), un float (descuento) y un float (total a pagar), no retorna nada, imprime la información de la compra.
+    # - No llames a las funciones en este archivo; se llaman desde menu/menu.py.
+#NO USES TABULATE
 
-    def leerCantidad():
-        while True:
-            try:
-                cantidad = int(input("Ingrese la cantidad de boletos a comprar (entero mayor que cero): "))
-                if cantidad > 0:
-                    return cantidad
-                else:
-                    print("La cantidad debe ser un entero mayor que cero. Intente nuevamente.")
-            except ValueError:
-                print("Entrada inválida. Por favor, ingrese un número entero.")
-                continue
+def leerCantidad():
+    cantidad = int(input("Ingrese la cantidad de boletos a comprar (entero mayor que cero): "))
+    return cantidad
 
-    def calcularSubtotal(cantidad):
-        precio_unitario = 75.00
-        subtotal = cantidad * precio_unitario
-        return subtotal
+def calcularSubtotal(cantidad):
+    precio_unitario = 75.00
+    subtotal = cantidad * precio_unitario
+    return subtotal
 
-    def calcularDescuento(subtotal, cantidad):
-        if cantidad >= 4:
-            descuento = subtotal * 0.10
-        else:
-            descuento = 0.00
-        return descuento    
+def calcularDescuento(subtotal, cantidad):
+    if cantidad >= 4:
+        descuento = subtotal * 0.10
+    else:
+        descuento = 0.00
+    return descuento
 
-    def mostrarCompra(cantidad, precio_unitario, subtotal, descuento, total):
-        from tabulate import tabulate
-        headers = ["Cantidad de boletos", "Precio unitario", "Subtotal", "Descuento", "Total a pagar"]
-        data = [[cantidad, f"${precio_unitario:.2f}", f"${subtotal:.2f}", f"${descuento:.2f}", f"${total:.2f}"]]
-        print(tabulate(data, headers=headers, tablefmt="grid"))
+def mostrarCompra(cantidad, subtotal, descuento):
+    total_a_pagar = subtotal - descuento
+    print(f"\nCantidad de boletos adquiridos: {cantidad}")
+    print(f"Precio unitario del boleto: ${75.00:.2f}")
+    print(f"Subtotal de la compra: ${subtotal:.2f}")
+    print(f"Descuento aplicado: ${descuento:.2f}")
+    print(f"Total a pagar: ${total_a_pagar:.2f}\n")
