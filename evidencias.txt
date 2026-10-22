@@ -1,0 +1,26 @@
+Menú de ejercicios
+1. Ejercicio 1: Compra de boletos de cine
+2. Ejercicio 2: Rendimiento de combustible
+0. Salir
+Seleccione una opción: 1
+Ingrese la cantidad de boletos a comprar (entero mayor que cero): 1
+
+Cantidad de boletos adquiridos: 1
+Precio unitario del boleto: $75.00
+Subtotal de la compra: $75.00
+Descuento aplicado: $0.00
+Total a pagar: $75.00
+
+Menú de ejercicios
+1. Ejercicio 1: Compra de boletos de cine
+2. Ejercicio 2: Rendimiento de combustible
+0. Salir
+Seleccione una opción: 2
+Ingrese la distancia recorrida (km): 120
+Ingrese los litros consumidos (L): 10
+
+Distancia recorrida: 120.00 km
+Litros consumidos: 10.00 L
+Precio por litro de combustible: $24.00
+Rendimiento del vehículo: 12.00 km/L
+Costo total del combustible consumido: $240.00
